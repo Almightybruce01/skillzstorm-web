@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --neon-blue: #0099ff;
+  --neon-purple: #9933ff;
+  --neon-green: #00ff80;
+  --neon-pink: #ff3399;
+  --neon-yellow: #ffe600;
+  --neon-orange: #ff8000;
+  --neon-red: #ff2626;
+  --neon-cyan: #00e6e6;
+  --bg-dark: #0d0d1f;
+  --surface: #1a1a33;
+  --surface-light: #262647;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-dark);
+  color: white;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Neon glow utilities */
+.neon-glow-blue {
+  text-shadow: 0 0 10px rgba(0, 153, 255, 0.8), 0 0 20px rgba(0, 153, 255, 0.4);
+}
+.neon-glow-purple {
+  text-shadow: 0 0 10px rgba(153, 51, 255, 0.8), 0 0 20px rgba(153, 51, 255, 0.4);
+}
+.neon-glow-green {
+  text-shadow: 0 0 10px rgba(0, 255, 128, 0.8), 0 0 20px rgba(0, 255, 128, 0.4);
+}
+.neon-glow-yellow {
+  text-shadow: 0 0 10px rgba(255, 230, 0, 0.8), 0 0 20px rgba(255, 230, 0, 0.4);
+}
+.neon-glow-red {
+  text-shadow: 0 0 10px rgba(255, 38, 38, 0.8), 0 0 20px rgba(255, 38, 38, 0.4);
+}
+
+.glass-card {
+  background: rgba(26, 26, 51, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+}
+.gradient-fire {
+  background: linear-gradient(135deg, var(--neon-orange), var(--neon-red), var(--neon-pink));
+}
+.gradient-success {
+  background: linear-gradient(135deg, var(--neon-green), #00b359);
+}
+.gradient-gold {
+  background: linear-gradient(135deg, var(--neon-yellow), var(--neon-orange));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+@keyframes glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-pulse-slow { animation: pulse 2s ease-in-out infinite; }
+.animate-glow { animation: glow 2s ease-in-out infinite; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
