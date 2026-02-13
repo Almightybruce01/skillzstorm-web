@@ -14,20 +14,22 @@ import { BottomStickyAd } from './components/ads/AdBanner'
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[#0d0d1f]">
+      <div className="min-h-screen w-full bg-[#0d0d1f] flex flex-col">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/games" element={<GamesPage />} />
-          <Route path="/games/:category" element={<GamesPage />} />
-          <Route path="/game/:gameId" element={<GameDetailPage />} />
-          <Route path="/store" element={<StorePage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/vr" element={<VRPage />} />
-          <Route path="/premium" element={<PremiumPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/terms" element={<TermsPage />} />
-        </Routes>
+        <main className="flex-1 w-full">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/games" element={<GamesPage />} />
+            <Route path="/games/:category" element={<GamesPage />} />
+            <Route path="/game/:gameId" element={<GameDetailPage />} />
+            <Route path="/store" element={<StorePage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/vr" element={<VRPage />} />
+            <Route path="/premium" element={<PremiumPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+          </Routes>
+        </main>
         {/* Sticky bottom banner ad — auto-hides for ad-free users */}
         <BottomStickyAd />
       </div>

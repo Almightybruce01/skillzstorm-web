@@ -8,7 +8,7 @@ export function GameDetailPage() {
 
   if (!game) {
     return (
-      <div className="pt-20 min-h-screen flex flex-col items-center justify-center text-center">
+      <div className="pt-20 min-h-[100vh] w-full flex flex-col items-center justify-center text-center">
         <div className="text-6xl mb-4">🔍</div>
         <h1 className="text-2xl font-bold text-white mb-2">Game Not Found</h1>
         <Link to="/games" className="text-[#0099ff] font-bold">← Back to Games</Link>
@@ -19,7 +19,7 @@ export function GameDetailPage() {
   const gradeColors = game.supportedGrades.map(g => gradeLevels.find(gl => gl.value === g));
 
   return (
-    <div className="pt-20 min-h-screen max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="pt-20 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       {/* Back link */}
       <Link to="/games" className="text-white/50 text-sm hover:text-white transition-colors mb-6 inline-block">
         ← Back to Games

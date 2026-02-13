@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export function TermsPage() {
   return (
-    <div className="pt-20 min-h-screen max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="pt-20 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       <Link to="/" className="text-white/50 text-sm hover:text-white transition-colors mb-6 inline-block">
         ← Back to Home
       </Link>

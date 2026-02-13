@@ -6,15 +6,15 @@ export function HomePage() {
   const featured = getFeaturedGames();
 
   return (
-    <div className="pt-16 min-h-screen">
-      {/* Animated Background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute w-96 h-96 rounded-full bg-[#0099ff]/10 blur-[120px] top-1/4 -left-48 animate-pulse-slow" />
-        <div className="absolute w-96 h-96 rounded-full bg-[#9933ff]/10 blur-[120px] top-1/2 -right-48 animate-pulse-slow" />
-        <div className="absolute w-96 h-96 rounded-full bg-[#00e6e6]/5 blur-[120px] bottom-0 left-1/3 animate-pulse-slow" />
+    <div className="pt-16 w-full min-h-[100vh] bg-[#0d0d1f]">
+      {/* Animated Background — fills entire viewport */}
+      <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#0099ff]/10 blur-[150px] top-1/4 -left-48 animate-pulse-slow" />
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#9933ff]/10 blur-[150px] top-1/2 -right-48 animate-pulse-slow" />
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#00e6e6]/5 blur-[150px] bottom-0 left-1/3 animate-pulse-slow" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <section className="text-center py-20">
           <h1 className="text-6xl sm:text-8xl font-black leading-none mb-4">

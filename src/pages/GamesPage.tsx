@@ -18,7 +18,7 @@ export function GamesPage() {
   });
 
   return (
-    <div className="pt-20 min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="pt-20 min-h-[100vh] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-3xl font-black text-white mb-2">
