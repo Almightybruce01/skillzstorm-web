@@ -59,7 +59,7 @@ export function CheckoutPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [email, setEmail] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [showSuccess] = useState(false);
 
   useEffect(() => {
     // Load cart from localStorage
