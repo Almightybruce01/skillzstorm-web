@@ -101,14 +101,20 @@ export function GamesPage() {
                 className="game-card group text-center animate-pop-in"
                 style={{ animationDelay: `${Math.min(i * 0.04, 0.8)}s` }}
               >
-                {/* Emoji icon */}
-                <div className="text-4xl mb-3 transition-all duration-400 group-hover:scale-[1.35]"
-                  style={{ filter: `drop-shadow(0 0 0 transparent)` }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.filter = `drop-shadow(0 0 15px ${color}60)`; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.filter = `drop-shadow(0 0 0 transparent)`; }}
-                >
-                  {game.iconEmoji}
-                </div>
+                {/* Cover Art or Emoji fallback */}
+                {game.coverArt ? (
+                  <div className="w-full aspect-[16/10] mb-3 rounded-xl overflow-hidden transition-all duration-400 group-hover:scale-105">
+                    <img src={game.coverArt} alt={game.name} className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                ) : (
+                  <div className="w-full aspect-[16/10] mb-3 rounded-xl overflow-hidden flex items-center justify-center transition-all duration-400 group-hover:scale-105"
+                    style={{ background: `linear-gradient(135deg, ${color}15, ${color}05)` }}
+                  >
+                    <span className="text-5xl group-hover:scale-110 transition-transform duration-300"
+                      style={{ filter: `drop-shadow(0 0 12px ${color}40)` }}
+                    >{game.iconEmoji}</span>
+                  </div>
+                )}
 
                 <h3 className="font-bold text-white text-sm mb-1 line-clamp-1 group-hover:transition-colors duration-300"
                   onMouseEnter={(e) => { (e.target as HTMLElement).style.color = color; }}

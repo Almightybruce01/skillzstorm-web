@@ -40,10 +40,17 @@ export function GameDetailPage() {
 
       {/* Hero */}
       <div className="text-center mb-10 animate-slide-up">
-        <div className="relative inline-block">
-          <div className="absolute inset-0 blur-[60px] rounded-full scale-[2] animate-pulse-slow" style={{ background: `${accent}20` }} />
-          <div className="relative text-[100px] sm:text-[120px] mb-4 animate-float leading-none">{game.iconEmoji}</div>
-        </div>
+        {game.coverArt ? (
+          <div className="relative w-full max-w-xl mx-auto mb-6 rounded-2xl overflow-hidden shadow-2xl animate-slide-up" style={{ boxShadow: `0 8px 40px ${accent}20` }}>
+            <img src={game.coverArt} alt={game.name} className="w-full h-auto object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d1f] via-transparent to-transparent" />
+          </div>
+        ) : (
+          <div className="relative inline-block">
+            <div className="absolute inset-0 blur-[60px] rounded-full scale-[2] animate-pulse-slow" style={{ background: `${accent}20` }} />
+            <div className="relative text-[100px] sm:text-[120px] mb-4 animate-float leading-none">{game.iconEmoji}</div>
+          </div>
+        )}
         <h1 className="text-4xl sm:text-5xl font-black text-white mb-4 animate-slide-up delay-100">{game.name}</h1>
         <div className="flex justify-center gap-2 mb-2 animate-slide-up delay-200 flex-wrap">
           {game.isFeatured && (

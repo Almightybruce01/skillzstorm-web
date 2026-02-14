@@ -14,17 +14,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-12">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="relative">
-              {/* Glow behind logo on hover */}
-              <div className="absolute inset-0 blur-xl bg-gradient-to-r from-[#0099ff]/0 to-[#9933ff]/0 group-hover:from-[#0099ff]/30 group-hover:to-[#9933ff]/30 transition-all duration-500 rounded-full scale-150" />
-              <span className="relative text-xl font-black tracking-tight">
-                <span className="bg-gradient-to-r from-[#0099ff] via-[#6644ff] to-[#9933ff] bg-clip-text text-transparent group-hover:from-[#33bbff] group-hover:via-[#9966ff] group-hover:to-[#cc66ff] transition-all duration-300">SKILLZ</span>
-                <span className="bg-gradient-to-r from-[#ff8000] via-[#ff4400] to-[#ff2626] bg-clip-text text-transparent group-hover:from-[#ffaa33] group-hover:via-[#ff6633] group-hover:to-[#ff4444] transition-all duration-300">STORM</span>
-              </span>
-            </div>
-            <span className="hidden sm:inline text-[10px] font-bold text-[#00e6e6] tracking-[0.25em] neon-glow-cyan opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-              PLAY HARD. THINK HARDER.
-            </span>
+            <img src="/images/logo.png" alt="SkillzStorm" className="h-8 sm:h-9 w-auto object-contain group-hover:brightness-110 transition-all duration-300" />
           </Link>
           
           {/* Desktop Nav Links */}

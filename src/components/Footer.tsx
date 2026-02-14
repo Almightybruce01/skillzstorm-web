@@ -9,10 +9,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="col-span-2 sm:col-span-4 lg:col-span-1 mb-4 lg:mb-0">
             <Link to="/" className="inline-block mb-3">
-              <span className="text-xl font-black">
-                <span className="bg-gradient-to-r from-[#0099ff] to-[#9933ff] bg-clip-text text-transparent">SKILLZ</span>
-                <span className="bg-gradient-to-r from-[#ff8000] to-[#ff2626] bg-clip-text text-transparent">STORM</span>
-              </span>
+              <img src="/images/logo.png" alt="SkillzStorm" className="h-8 w-auto" />
             </Link>
             <p className="text-white/30 text-xs leading-relaxed mb-4 max-w-[200px]">
               The arcade learning platform where education meets entertainment. Play Hard. Think Harder.

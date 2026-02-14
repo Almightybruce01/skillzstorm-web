@@ -21,15 +21,10 @@ export function HomePage() {
             <span className="text-white/50 text-xs font-bold tracking-[0.15em]">LIVE NOW — {allGames.filter(g => g.isAvailable).length} GAMES FREE TO PLAY</span>
           </div>
 
-          <h1 className="text-7xl sm:text-[10rem] font-black leading-[0.85] mb-6 animate-slide-up delay-100 relative">
-            <span className="bg-gradient-to-r from-[#0099ff] via-[#6644ff] to-[#9933ff] bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(0,153,255,0.4)]">SKILLZ</span>
-            <br className="sm:hidden" />
-            <span className="bg-gradient-to-r from-[#ff8000] via-[#ff4400] to-[#ff2626] bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(255,128,0,0.4)]">STORM</span>
-          </h1>
-
-          <p className="text-[#00e6e6] font-black tracking-[0.5em] text-xs sm:text-sm mb-8 neon-glow-cyan animate-slide-up delay-200">
-            PLAY HARD. THINK HARDER.
-          </p>
+          {/* Logo Image */}
+          <div className="animate-slide-up delay-100 mb-6">
+            <img src="/images/logo.png" alt="SkillzStorm — Play Hard. Think Harder." className="h-20 sm:h-32 md:h-40 w-auto mx-auto drop-shadow-[0_0_40px_rgba(0,153,255,0.3)]" />
+          </div>
 
           <p className="text-white/40 max-w-lg mx-auto mb-12 text-base sm:text-lg leading-relaxed animate-slide-up delay-300">
             The arcade learning platform with <span className="text-white/70 font-semibold">{allGames.length}+ games</span>, 
@@ -70,10 +65,18 @@ export function HomePage() {
                 data-color="blue"
                 style={{ animationDelay: `${i * 0.08}s` }}
               >
-                {/* Icon */}
-                <div className="text-5xl mb-3 transition-all duration-400 group-hover:scale-[1.3] group-hover:drop-shadow-[0_0_20px_rgba(0,153,255,0.5)]">
-                  {game.iconEmoji}
-                </div>
+                {/* Cover Art */}
+                {game.coverArt ? (
+                  <div className="w-full aspect-[16/10] mb-3 rounded-xl overflow-hidden transition-all duration-400 group-hover:scale-105">
+                    <img src={game.coverArt} alt={game.name} className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                ) : (
+                  <div className="w-full aspect-[16/10] mb-3 rounded-xl overflow-hidden flex items-center justify-center transition-all duration-400 group-hover:scale-105"
+                    style={{ background: 'linear-gradient(135deg, rgba(0,153,255,0.1), rgba(153,51,255,0.05))' }}
+                  >
+                    <span className="text-5xl group-hover:scale-110 transition-transform duration-300">{game.iconEmoji}</span>
+                  </div>
+                )}
                 <h3 className="font-bold text-white text-sm mb-1 group-hover:text-[#0099ff] transition-colors duration-300">{game.name}</h3>
                 <p className="text-white/30 text-xs line-clamp-2 group-hover:text-white/50 transition-colors">{game.description}</p>
                 <div className="flex justify-center mt-3 gap-1.5">
