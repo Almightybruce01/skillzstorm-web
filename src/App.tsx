@@ -8,7 +8,12 @@ import { VRPage } from './pages/VRPage'
 import { PremiumPage } from './pages/PremiumPage'
 import { PrivacyPage } from './pages/PrivacyPage'
 import { TermsPage } from './pages/TermsPage'
+import { AboutPage } from './pages/AboutPage'
+import { ContactPage } from './pages/ContactPage'
+import { SchoolsPage } from './pages/SchoolsPage'
+import { AccessibilityPage } from './pages/AccessibilityPage'
 import { Navbar } from './components/Navbar'
+import { Footer } from './components/Footer'
 import { BottomStickyAd } from './components/ads/AdBanner'
 
 function App() {
@@ -28,8 +33,13 @@ function App() {
             <Route path="/premium" element={<PremiumPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/schools" element={<SchoolsPage />} />
+            <Route path="/accessibility" element={<AccessibilityPage />} />
           </Routes>
         </main>
+        <Footer />
         {/* Sticky bottom banner ad — auto-hides for ad-free users */}
         <BottomStickyAd />
       </div>

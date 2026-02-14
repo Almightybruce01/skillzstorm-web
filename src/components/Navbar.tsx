@@ -31,7 +31,7 @@ export function Navbar() {
           <div className="hidden sm:flex items-center gap-1">
             <NavLink to="/" active={location.pathname === '/'} icon="🏠">Home</NavLink>
             <NavLink to="/games" active={location.pathname.startsWith('/games') || location.pathname.startsWith('/game/')} icon="🎮">Games</NavLink>
-            <NavLink to="/vr" active={location.pathname === '/vr'} icon="🥽">VR</NavLink>
+            <NavLink to="/schools" active={location.pathname === '/schools'} icon="🏫">Schools</NavLink>
             <NavLink to="/store" active={location.pathname === '/store'} icon="🛒">Store</NavLink>
             <Link
               to="/premium"
@@ -66,8 +66,10 @@ export function Navbar() {
         <div className="px-4 pb-4 pt-2 space-y-1 bg-[#0d0d1f]/95 backdrop-blur-2xl border-t border-white/5">
           <MobileNavLink to="/" active={location.pathname === '/'} icon="🏠" onClick={() => setMobileOpen(false)}>Home</MobileNavLink>
           <MobileNavLink to="/games" active={location.pathname.startsWith('/games')} icon="🎮" onClick={() => setMobileOpen(false)}>Games</MobileNavLink>
-          <MobileNavLink to="/vr" active={location.pathname === '/vr'} icon="🥽" onClick={() => setMobileOpen(false)}>VR</MobileNavLink>
+          <MobileNavLink to="/schools" active={location.pathname === '/schools'} icon="🏫" onClick={() => setMobileOpen(false)}>For Schools</MobileNavLink>
           <MobileNavLink to="/store" active={location.pathname === '/store'} icon="🛒" onClick={() => setMobileOpen(false)}>Store</MobileNavLink>
+          <MobileNavLink to="/vr" active={location.pathname === '/vr'} icon="🥽" onClick={() => setMobileOpen(false)}>VR</MobileNavLink>
+          <MobileNavLink to="/about" active={location.pathname === '/about'} icon="ℹ️" onClick={() => setMobileOpen(false)}>About</MobileNavLink>
           <MobileNavLink to="/premium" active={location.pathname === '/premium'} icon="👑" onClick={() => setMobileOpen(false)}>Premium</MobileNavLink>
         </div>
       </div>

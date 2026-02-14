@@ -183,25 +183,61 @@ export function HomePage() {
         {/* Footer Ad */}
         <FooterAd />
 
-        {/* Footer */}
-        <footer className="border-t border-white/5 py-10 text-center">
-          <p className="font-black text-lg mb-3">
-            <span className="bg-gradient-to-r from-[#0099ff] to-[#9933ff] bg-clip-text text-transparent">SKILLZ</span>
-            <span className="bg-gradient-to-r from-[#ff8000] to-[#ff2626] bg-clip-text text-transparent">STORM</span>
-            <span className="text-white/40 font-normal text-sm"> — Play Hard. Think Harder.</span>
-          </p>
-          <div className="flex items-center justify-center gap-4 mb-3 text-sm">
-            <Link to="/privacy" className="text-white/30 hover:text-[#0099ff] transition-colors duration-300">Privacy Policy</Link>
-            <span className="text-white/10">•</span>
-            <Link to="/terms" className="text-white/30 hover:text-[#0099ff] transition-colors duration-300">Terms of Service</Link>
-            <span className="text-white/10">•</span>
-            <span className="text-white/30 flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00ff80] inline-block" />
-              COPPA Compliant
-            </span>
+        {/* For Schools CTA */}
+        <section className="mb-16 animate-slide-up">
+          <div className="glass-card p-8 sm:p-10 btn-shimmer overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(153,51,255,0.08), rgba(0,153,255,0.05))' }}>
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              <div className="text-5xl">🏫</div>
+              <div className="flex-1 text-center sm:text-left">
+                <h2 className="text-xl font-black text-white mb-2">Schools & Educators</h2>
+                <p className="text-white/45 text-sm max-w-lg">
+                  SkillzStorm is free for every classroom. No setup, no accounts, no IT required. 
+                  Works on any device. Standards-aligned. COPPA compliant.
+                </p>
+              </div>
+              <Link to="/schools" className="gradient-hero px-6 py-3 rounded-xl font-bold text-white text-sm hover:opacity-90 transition-all duration-300 hover:scale-105 active:scale-95 btn-shimmer overflow-hidden flex-shrink-0">
+                <span className="relative z-10">Learn More →</span>
+              </Link>
+            </div>
           </div>
-          <p className="text-white/20 text-xs">&copy; 2026 SkillzStorm. All rights reserved.</p>
-        </footer>
+        </section>
+
+        {/* Get the App */}
+        <section className="mb-16 animate-slide-up">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/10" />
+            <h2 className="text-xl font-black tracking-wider text-white">GET THE APP</h2>
+            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/10" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+            <a href="#" className="glass-card glass-card-blue p-5 text-center group hover:scale-[1.03] transition-all duration-300 active:scale-[0.97]">
+              <div className="text-3xl mb-2">🍎</div>
+              <div className="text-xs text-white/40 mb-0.5">Download on the</div>
+              <div className="text-sm font-black text-white group-hover:text-[#0099ff] transition-colors">App Store</div>
+            </a>
+            <a href="#" className="glass-card glass-card-purple p-5 text-center group hover:scale-[1.03] transition-all duration-300 active:scale-[0.97]">
+              <div className="text-3xl mb-2">💻</div>
+              <div className="text-xs text-white/40 mb-0.5">Available on</div>
+              <div className="text-sm font-black text-white group-hover:text-[#9933ff] transition-colors">Mac App Store</div>
+            </a>
+            <a href="https://skillzstorm.com" className="glass-card glass-card-green p-5 text-center group hover:scale-[1.03] transition-all duration-300 active:scale-[0.97]">
+              <div className="text-3xl mb-2">🌐</div>
+              <div className="text-xs text-white/40 mb-0.5">Play free on</div>
+              <div className="text-sm font-black text-white group-hover:text-[#00ff80] transition-colors">skillzstorm.com</div>
+            </a>
+          </div>
+        </section>
+
+        {/* Trust Badges */}
+        <section className="mb-10 text-center animate-fade-in">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[11px] text-white/25 font-bold">
+            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-[#00ff80]" />COPPA Compliant</span>
+            <span>•</span><span>Child-Safe Ads</span>
+            <span>•</span><span>No Data Collection</span>
+            <span>•</span><span>No Login Required</span>
+            <span>•</span><span>School Approved</span>
+          </div>
+        </section>
       </div>
     </div>
   );

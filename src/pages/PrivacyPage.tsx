@@ -3,14 +3,19 @@ import { Link } from 'react-router-dom';
 export function PrivacyPage() {
   return (
     <div className="pt-20 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-      <Link to="/" className="text-white/50 text-sm hover:text-white transition-colors mb-6 inline-block">
-        ← Back to Home
+      <Link to="/" className="text-white/40 text-sm hover:text-[#0099ff] transition-colors duration-300 mb-6 inline-flex items-center gap-1 group">
+        <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span> Back to Home
       </Link>
 
-      <h1 className="text-3xl font-black text-white mb-2">Privacy Policy</h1>
-      <p className="text-white/40 text-sm mb-8">Last updated: February 13, 2026</p>
+      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00ff80]/10 border border-[#00ff80]/20 mb-4">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#00ff80]" />
+        <span className="text-[#00ff80] text-[11px] font-black tracking-wider">COPPA COMPLIANT</span>
+      </div>
 
-      <div className="space-y-8 text-white/70 text-sm leading-relaxed">
+      <h1 className="text-3xl font-black text-white mb-2 animate-slide-up">Privacy Policy</h1>
+      <p className="text-white/40 text-sm mb-8 animate-slide-up delay-100">Last updated: February 13, 2026</p>
+
+      <div className="space-y-8 text-white/60 text-sm leading-relaxed animate-slide-up delay-200">
         <Section title="Overview">
           <p>
             SkillzStorm ("we," "our," or "us") is an educational gaming platform for students in grades K-12.

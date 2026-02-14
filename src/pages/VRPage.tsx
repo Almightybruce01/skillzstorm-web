@@ -150,15 +150,6 @@ export function VRPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/5 py-8 text-center">
-        <p className="font-black text-white/50 mb-2">
-          <span className="bg-gradient-to-r from-[#0099ff] to-[#9933ff] bg-clip-text text-transparent">SKILLZ</span>
-          <span className="bg-gradient-to-r from-[#ff8000] to-[#ff2626] bg-clip-text text-transparent">STORM</span>
-          <span className="text-white/30 font-normal text-sm"> — Play Hard. Think Harder.</span>
-        </p>
-        <p className="text-white/20 text-xs">&copy; 2026 SkillzStorm. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
