@@ -46,7 +46,7 @@ export function StorePage() {
   const cartTotal = cart.reduce((sum, item) => sum + item.priceNum, 0);
 
   return (
-    <div className="pt-24 min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+    <div className="pt-28 min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
       <TopBannerAd />
 
       {/* Header */}
