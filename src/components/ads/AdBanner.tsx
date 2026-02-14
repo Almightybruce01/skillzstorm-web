@@ -100,7 +100,7 @@ export function BottomStickyAd() {
   if (isAdFree()) return null;
   
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 flex justify-center bg-[#0d0d1f]/90 backdrop-blur-sm border-t border-white/5 py-1">
+    <div className="fixed bottom-0 left-0 right-0 z-40 flex justify-center bg-white/90 backdrop-blur-sm border-t border-gray-200 py-1 shadow-lg">
       <AdBanner
         slot={ADSENSE_CONFIG.slots.bottomBanner}
         format="horizontal"

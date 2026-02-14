@@ -2,15 +2,15 @@ import { Link } from 'react-router-dom';
 
 export function TermsPage() {
   return (
-    <div className="pt-24 sm:pt-28 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-      <Link to="/" className="text-white/40 text-sm hover:text-[#0099ff] transition-colors duration-300 mb-6 inline-flex items-center gap-1 group">
+    <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <Link to="/" className="text-gray-400 text-sm hover:text-[#3b82f6] transition-colors duration-300 mb-6 inline-flex items-center gap-1 group">
         <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span> Back to Home
       </Link>
 
-      <h1 className="text-3xl font-black text-white mb-2 animate-slide-up">Terms of Service</h1>
-      <p className="text-white/40 text-sm mb-8 animate-slide-up delay-100">Last updated: February 13, 2026</p>
+      <h1 className="text-3xl font-black text-gray-800 mb-2 animate-slide-up">Terms of Service</h1>
+      <p className="text-gray-400 text-sm mb-8 animate-slide-up delay-100">Last updated: February 13, 2026</p>
 
-      <div className="space-y-8 text-white/60 text-sm leading-relaxed animate-slide-up delay-200">
+      <div className="space-y-8 text-gray-600 text-sm leading-relaxed animate-slide-up delay-200">
         <Section title="1. Acceptance of Terms">
           <p>
             By accessing or using SkillzStorm (the "Service"), including our website at skillzstorm.com
@@ -52,13 +52,13 @@ export function TermsPage() {
         </Section>
 
         <Section title="5. Purchases & Payments">
-          <p><strong className="text-white">In-App Purchases (iOS):</strong> Processed through Apple's App Store.
+          <p><strong className="text-gray-800">In-App Purchases (iOS):</strong> Processed through Apple's App Store.
             Subject to Apple's terms and refund policies. Apple's parental controls and "Ask to Buy"
             features apply.</p>
-          <p className="mt-2"><strong className="text-white">Website Purchases (Stripe):</strong> Physical products
+          <p className="mt-2"><strong className="text-gray-800">Website Purchases (Stripe):</strong> Physical products
             and web premium features are processed through Stripe. Subject to Stripe's terms.
             Shipping for physical items is 2-3 business days with a 30-day return policy.</p>
-          <p className="mt-2"><strong className="text-white">Refunds:</strong> Digital purchases are non-refundable
+          <p className="mt-2"><strong className="text-gray-800">Refunds:</strong> Digital purchases are non-refundable
             except as required by applicable law or platform policies. Physical products may be returned
             within 30 days in original condition.</p>
         </Section>
@@ -110,7 +110,7 @@ export function TermsPage() {
           <p>
             For questions about these Terms, contact us at:
           </p>
-          <p className="mt-2 text-white font-bold">legal@skillzstorm.com</p>
+          <p className="mt-2 text-gray-800 font-bold">legal@skillzstorm.com</p>
         </Section>
       </div>
     </div>
@@ -120,7 +120,7 @@ export function TermsPage() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-lg font-bold text-white mb-3">{title}</h2>
+      <h2 className="text-lg font-bold text-gray-800 mb-3">{title}</h2>
       {children}
     </section>
   );

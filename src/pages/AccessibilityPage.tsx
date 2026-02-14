@@ -2,15 +2,15 @@ import { Link } from 'react-router-dom';
 
 export function AccessibilityPage() {
   return (
-    <div className="pt-24 sm:pt-28 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-      <Link to="/" className="text-white/40 text-sm hover:text-[#0099ff] transition-colors mb-6 inline-flex items-center gap-1 group">
+    <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <Link to="/" className="text-gray-400 text-sm hover:text-[#3b82f6] transition-colors mb-6 inline-flex items-center gap-1 group">
         <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span> Back to Home
       </Link>
 
-      <h1 className="text-3xl font-black text-white mb-2 animate-slide-up">Accessibility Statement</h1>
-      <p className="text-white/40 text-sm mb-8 animate-slide-up delay-100">Last updated: February 13, 2026</p>
+      <h1 className="text-3xl font-black text-gray-800 mb-2 animate-slide-up">Accessibility Statement</h1>
+      <p className="text-gray-400 text-sm mb-8 animate-slide-up delay-100">Last updated: February 13, 2026</p>
 
-      <div className="space-y-8 text-white/60 text-sm leading-relaxed animate-slide-up delay-200">
+      <div className="space-y-8 text-gray-600 text-sm leading-relaxed animate-slide-up delay-200">
         <Section title="Our Commitment">
           <p>
             SkillzStorm is committed to ensuring digital accessibility for people with disabilities. 
@@ -57,10 +57,10 @@ export function AccessibilityPage() {
             or have suggestions for improvement, please contact us:
           </p>
           <p className="mt-3">
-            <strong className="text-white">Email:</strong>{' '}
-            <a href="mailto:accessibility@skillzstorm.com" className="text-[#0099ff] hover:underline">accessibility@skillzstorm.com</a>
+            <strong className="text-gray-800">Email:</strong>{' '}
+            <a href="mailto:accessibility@skillzstorm.com" className="text-[#3b82f6] hover:underline">accessibility@skillzstorm.com</a>
           </p>
-          <p className="mt-2 text-white/40">We aim to respond to accessibility feedback within 2 business days.</p>
+          <p className="mt-2 text-gray-400">We aim to respond to accessibility feedback within 2 business days.</p>
         </Section>
       </div>
     </div>
@@ -70,7 +70,7 @@ export function AccessibilityPage() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-lg font-bold text-white mb-3">{title}</h2>
+      <h2 className="text-lg font-bold text-gray-800 mb-3">{title}</h2>
       {children}
     </section>
   );

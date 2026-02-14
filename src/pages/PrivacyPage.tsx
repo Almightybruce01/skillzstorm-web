@@ -2,20 +2,20 @@ import { Link } from 'react-router-dom';
 
 export function PrivacyPage() {
   return (
-    <div className="pt-24 sm:pt-28 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-      <Link to="/" className="text-white/40 text-sm hover:text-[#0099ff] transition-colors duration-300 mb-6 inline-flex items-center gap-1 group">
+    <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <Link to="/" className="text-gray-400 text-sm hover:text-[#3b82f6] transition-colors duration-300 mb-6 inline-flex items-center gap-1 group">
         <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span> Back to Home
       </Link>
 
-      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00ff80]/10 border border-[#00ff80]/20 mb-4">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#00ff80]" />
-        <span className="text-[#00ff80] text-[11px] font-black tracking-wider">COPPA COMPLIANT</span>
+      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10b981]/10 border border-[#10b981]/20 mb-4">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
+        <span className="text-[#10b981] text-[11px] font-black tracking-wider">COPPA COMPLIANT</span>
       </div>
 
-      <h1 className="text-3xl font-black text-white mb-2 animate-slide-up">Privacy Policy</h1>
-      <p className="text-white/40 text-sm mb-8 animate-slide-up delay-100">Last updated: February 13, 2026</p>
+      <h1 className="text-3xl font-black text-gray-800 mb-2 animate-slide-up">Privacy Policy</h1>
+      <p className="text-gray-400 text-sm mb-8 animate-slide-up delay-100">Last updated: February 13, 2026</p>
 
-      <div className="space-y-8 text-white/60 text-sm leading-relaxed animate-slide-up delay-200">
+      <div className="space-y-8 text-gray-600 text-sm leading-relaxed animate-slide-up delay-200">
         <Section title="Overview">
           <p>
             SkillzStorm ("we," "our," or "us") is an educational gaming platform for students in grades K-12.
@@ -74,7 +74,7 @@ export function PrivacyPage() {
         <Section title="Advertising">
           <p>
             SkillzStorm displays ads through Google AdMob (mobile app) and Google AdSense (website).
-            All ad content is configured as <strong className="text-white">child-directed</strong> in compliance with COPPA:
+            All ad content is configured as <strong className="text-gray-800">child-directed</strong> in compliance with COPPA:
           </p>
           <ul className="list-disc list-inside mt-2 space-y-1">
             <li>No personalized or behaviorally-targeted ads are shown</li>
@@ -109,7 +109,7 @@ export function PrivacyPage() {
           <ul className="list-disc list-inside mt-2 space-y-1">
             <li>Used solely to fulfill the order</li>
             <li>Processed and stored by Stripe (not by us)</li>
-            <li>Subject to <a href="https://stripe.com/privacy" className="text-[#0099ff] underline" target="_blank" rel="noopener noreferrer">Stripe's Privacy Policy</a></li>
+            <li>Subject to <a href="https://stripe.com/privacy" className="text-[#3b82f6] underline" target="_blank" rel="noopener noreferrer">Stripe's Privacy Policy</a></li>
             <li>Never used for marketing or shared with third parties</li>
           </ul>
           <p className="mt-2">
@@ -120,9 +120,9 @@ export function PrivacyPage() {
         <Section title="Third-Party Services">
           <p>We use the following third-party services:</p>
           <ul className="list-disc list-inside mt-2 space-y-1">
-            <li><strong className="text-white">Google AdMob/AdSense</strong> — Advertising (child-directed mode enabled)</li>
-            <li><strong className="text-white">Apple StoreKit</strong> — In-app purchases on iOS</li>
-            <li><strong className="text-white">Stripe</strong> — Payment processing for website purchases</li>
+            <li><strong className="text-gray-800">Google AdMob/AdSense</strong> — Advertising (child-directed mode enabled)</li>
+            <li><strong className="text-gray-800">Apple StoreKit</strong> — In-app purchases on iOS</li>
+            <li><strong className="text-gray-800">Stripe</strong> — Payment processing for website purchases</li>
           </ul>
           <p className="mt-2">
             These services have their own privacy policies. We have configured all services
@@ -161,7 +161,7 @@ export function PrivacyPage() {
           <p>
             If you have questions about this Privacy Policy or our practices, please contact us at:
           </p>
-          <p className="mt-2 text-white font-bold">privacy@skillzstorm.com</p>
+          <p className="mt-2 text-gray-800 font-bold">privacy@skillzstorm.com</p>
         </Section>
       </div>
     </div>
@@ -171,7 +171,7 @@ export function PrivacyPage() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-lg font-bold text-white mb-3">{title}</h2>
+      <h2 className="text-lg font-bold text-gray-800 mb-3">{title}</h2>
       {children}
     </section>
   );

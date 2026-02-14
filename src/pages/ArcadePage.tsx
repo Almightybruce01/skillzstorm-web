@@ -34,13 +34,13 @@ export function ArcadePage() {
   };
 
   return (
-    <div className="pt-24 sm:pt-28 min-h-[100vh] w-full">
+    <div className="pt-20 sm:pt-24 page-enter min-h-[100vh] w-full">
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
 
         {/* Playing a game */}
         {activeGame ? (
           <div className="animate-pop-in">
-            <button onClick={closeGame} className="text-white/30 text-sm hover:text-white/60 transition-all mb-4 inline-flex items-center gap-2 group">
+            <button onClick={closeGame} className="text-gray-400 text-sm hover:text-gray-600 transition-all mb-4 inline-flex items-center gap-2 group">
               <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span>
               Back to Arcade
             </button>
@@ -54,9 +54,9 @@ export function ArcadePage() {
             <div className="text-center mb-10 animate-slide-up">
               <div className="text-6xl sm:text-8xl mb-4 animate-float">🕹️</div>
               <h1 className="text-5xl sm:text-7xl font-black mb-3">
-                <span className="bg-gradient-to-r from-[#ff3399] via-[#ffe600] to-[#00ff80] bg-clip-text text-transparent">ARCADE</span>
+                <span className="bg-gradient-to-r from-[#ec4899] via-[#f59e0b] to-[#10b981] bg-clip-text text-transparent">ARCADE</span>
               </h1>
-              <p className="text-white/40 text-sm max-w-md mx-auto mb-4">
+              <p className="text-gray-400 text-sm max-w-md mx-auto mb-4">
                 Classic games. No learning required. Just pure fun.
               </p>
 
@@ -65,8 +65,8 @@ export function ArcadePage() {
                 onClick={toggleBgMusic}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 border ${
                   musicOn
-                    ? 'border-[#ffe600]/40 text-[#ffe600] bg-[#ffe600]/10'
-                    : 'border-white/10 text-white/30 hover:text-white/60 hover:border-white/20'
+                    ? 'border-[#f59e0b]/40 text-[#f59e0b] bg-[#f59e0b]/10'
+                    : 'border-gray-200 text-gray-400 hover:text-gray-600 hover:border-gray-200'
                 }`}
               >
                 {musicOn ? '🎵 Music ON' : '🔇 Music OFF'}
@@ -81,8 +81,8 @@ export function ArcadePage() {
                   onClick={() => setFilter(tag)}
                   className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-300 active:scale-95 border ${
                     filter === tag
-                      ? 'border-[#ffe600]/40 text-[#ffe600] bg-[#ffe600]/10 shadow-[0_0_10px_rgba(255,230,0,0.1)]'
-                      : 'border-white/5 text-white/30 hover:text-white/60 hover:border-white/15 bg-white/[0.02]'
+                      ? 'border-[#f59e0b]/40 text-[#f59e0b] bg-[#f59e0b]/10 shadow-[0_0_10px_rgba(255,230,0,0.1)]'
+                      : 'border-gray-200 text-gray-400 hover:text-gray-600 hover:border-gray-200 bg-gray-50'
                   }`}
                 >
                   {tag}
@@ -96,7 +96,7 @@ export function ArcadePage() {
                 <button
                   key={game.id}
                   onClick={() => playGame(game)}
-                  className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:z-10 active:scale-95 border border-white/5 hover:border-white/20"
+                  className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:z-10 active:scale-95 border border-gray-200 hover:border-gray-200"
                   style={{
                     background: `linear-gradient(135deg, ${game.color}30, ${game.color}08)`,
                     animationDelay: `${idx * 0.03}s`,
@@ -116,14 +116,14 @@ export function ArcadePage() {
                     >
                       {game.emoji}
                     </span>
-                    <span className="text-[10px] sm:text-xs font-black text-white/70 group-hover:text-white transition-colors text-center leading-tight">
+                    <span className="text-[10px] sm:text-xs font-black text-gray-600 group-hover:text-gray-800 transition-colors text-center leading-tight">
                       {game.name}
                     </span>
                   </div>
 
                   {/* Play indicator on hover */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-lg font-black" style={{ background: `${game.color}90` }}>
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 text-lg font-black" style={{ background: `${game.color}90` }}>
                       ▶
                     </div>
                   </div>
@@ -132,7 +132,7 @@ export function ArcadePage() {
             </div>
 
             {/* Stats */}
-            <div className="mt-12 text-center text-white/15 text-xs">
+            <div className="mt-12 text-center text-gray-300 text-xs">
               {arcadeGames.length} arcade games • Click any game to play instantly
             </div>
           </>
