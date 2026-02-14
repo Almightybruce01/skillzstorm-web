@@ -31,7 +31,7 @@ export function Navbar() {
           <div className="hidden sm:flex items-center gap-1">
             <NavLink to="/" active={location.pathname === '/'} icon="🏠">Home</NavLink>
             <NavLink to="/games" active={location.pathname.startsWith('/games') || location.pathname.startsWith('/game/')} icon="🎮">Games</NavLink>
-            <NavLink to="/schools" active={location.pathname === '/schools'} icon="🏫">Schools</NavLink>
+            <NavLink to="/vr" active={location.pathname === '/vr'} icon="🥽">VR</NavLink>
             <NavLink to="/store" active={location.pathname === '/store'} icon="🛒">Store</NavLink>
             <Link
               to="/premium"

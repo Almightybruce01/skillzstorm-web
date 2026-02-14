@@ -11,7 +11,7 @@ export function ContactPage() {
   };
 
   return (
-    <div className="pt-20 min-h-[100vh] w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="pt-24 min-h-[100vh] w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       {/* Hero */}
       <section className="text-center py-14 animate-slide-up">
         <h1 className="text-5xl font-black mb-4">
@@ -32,7 +32,7 @@ export function ContactPage() {
           <ContactCard icon="🐛" title="Report a Bug" value="bugs@skillzstorm.com" href="mailto:bugs@skillzstorm.com" color="#ff2626" />
 
           {/* Social */}
-          <div className="glass-card p-5">
+          <div className="game-card p-5">
             <h3 className="text-xs font-black text-white/60 tracking-widest mb-3">FOLLOW US</h3>
             <div className="flex gap-2">
               {[
@@ -53,7 +53,7 @@ export function ContactPage() {
         {/* Contact Form */}
         <div className="lg:col-span-2 animate-slide-up delay-200">
           {submitted ? (
-            <div className="glass-card glass-card-green p-10 text-center">
+            <div className="game-card game-card-green p-10 text-center">
               <div className="text-6xl mb-4 animate-bounce-in">✅</div>
               <h2 className="text-2xl font-black text-white mb-2">Message Sent!</h2>
               <p className="text-white/50">Thank you for reaching out. We'll get back to you within 24-48 hours.</p>
@@ -62,7 +62,7 @@ export function ContactPage() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="glass-card p-8">
+            <form onSubmit={handleSubmit} className="game-card p-8">
               <h2 className="text-lg font-black text-white mb-6">Send us a Message</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
@@ -121,7 +121,7 @@ export function ContactPage() {
 
 function ContactCard({ icon, title, value, href, color }: { icon: string; title: string; value: string; href: string; color: string }) {
   return (
-    <a href={href} className="glass-card p-4 flex items-center gap-3 group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+    <a href={href} className="game-card p-4 flex items-center gap-3 group transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
       onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = `${color}30`; }}
       onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = ''; }}
     >
@@ -136,7 +136,7 @@ function ContactCard({ icon, title, value, href, color }: { icon: string; title:
 
 function QuickFAQ({ q, a }: { q: string; a: string }) {
   return (
-    <details className="glass-card p-4 group cursor-pointer">
+    <details className="game-card p-4 group cursor-pointer">
       <summary className="font-bold text-white text-sm list-none flex items-center justify-between group-hover:text-[#0099ff] transition-colors">
         {q}
         <span className="text-white/20 group-open:rotate-180 transition-transform duration-300 ml-2">▾</span>

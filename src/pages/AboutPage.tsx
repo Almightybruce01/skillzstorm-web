@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export function AboutPage() {
   return (
-    <div className="pt-20 min-h-[100vh] w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="pt-24 min-h-[100vh] w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       {/* Hero */}
       <section className="text-center py-14 animate-slide-up">
         <h1 className="text-5xl font-black mb-4">
@@ -17,7 +17,7 @@ export function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="glass-card glass-card-blue p-8 mb-8 animate-slide-up delay-100">
+      <section className="game-card !p-8 mb-8 animate-slide-up delay-100">
         <div className="flex items-start gap-4">
           <span className="text-4xl">🎯</span>
           <div>
@@ -32,7 +32,7 @@ export function AboutPage() {
       </section>
 
       {/* Vision */}
-      <section className="glass-card glass-card-purple p-8 mb-8 animate-slide-up delay-200">
+      <section className="game-card !p-8 mb-8 animate-slide-up delay-200">
         <div className="flex items-start gap-4">
           <span className="text-4xl">🌟</span>
           <div>
@@ -64,7 +64,7 @@ export function AboutPage() {
             { icon: '🧠', subj: 'Logic & Reasoning', color: '#ff2626' },
             { icon: '📝', subj: 'SAT Prep', color: '#ffe600' },
           ].map(s => (
-            <div key={s.subj} className="glass-card p-3 flex items-center gap-3 group cursor-default">
+            <div key={s.subj} className="game-card !p-3 flex items-center gap-3 group cursor-default">
               <span className="text-lg transition-transform duration-300 group-hover:scale-125">{s.icon}</span>
               <span className="text-sm font-semibold text-white/60 group-hover:text-white/90 transition-colors" style={{}}>{s.subj}</span>
             </div>
@@ -73,7 +73,7 @@ export function AboutPage() {
       </section>
 
       {/* Key Numbers */}
-      <section className="glass-card p-8 mb-12 animate-slide-up">
+      <section className="game-card !p-8 mb-12 animate-slide-up">
         <h2 className="text-xl font-black text-white text-center mb-8">SkillzStorm by the Numbers</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
           <Stat value="50+" label="Arcade Games" color="#0099ff" />
@@ -84,7 +84,7 @@ export function AboutPage() {
       </section>
 
       {/* Built By */}
-      <section className="glass-card p-8 mb-12 animate-slide-up" style={{ background: 'linear-gradient(135deg, rgba(0,153,255,0.06), rgba(153,51,255,0.04))' }}>
+      <section className="game-card !p-8 mb-12 animate-slide-up" style={{ background: 'linear-gradient(135deg, rgba(0,153,255,0.06), rgba(153,51,255,0.04))' }}>
         <div className="text-center">
           <h2 className="text-xl font-black text-white mb-4">Built by EZTeach</h2>
           <p className="text-white/50 leading-relaxed max-w-2xl mx-auto mb-6">
@@ -93,10 +93,10 @@ export function AboutPage() {
             management to arcade learning — we're building the future of education, one product at a time.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link to="/schools" className="gradient-hero px-6 py-2.5 rounded-xl font-bold text-sm text-white hover:opacity-90 transition-all duration-300 hover:scale-105 active:scale-95 btn-shimmer overflow-hidden">
+            <Link to="/schools" className="btn-elite btn-elite-primary text-sm">
               <span className="relative z-10">For Schools & Districts</span>
             </Link>
-            <Link to="/contact" className="bg-white/5 border border-white/10 px-6 py-2.5 rounded-xl font-bold text-sm text-white hover:bg-white/10 transition-all duration-300 hover:scale-105 active:scale-95">
+            <Link to="/contact" className="btn-elite btn-elite-ghost text-sm">
               Contact Us
             </Link>
           </div>
@@ -128,7 +128,7 @@ function Stat({ value, label, color }: { value: string; label: string; color: st
 
 function ValueCard({ icon, title, desc, color }: { icon: string; title: string; desc: string; color: string }) {
   return (
-    <div className="glass-card p-6 group cursor-default transition-all duration-300 hover:scale-[1.02] active:scale-[0.99]"
+    <div className="game-card !p-6 group cursor-default transition-all duration-300 hover:scale-[1.02] active:scale-[0.99]"
       onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = `${color}30`; }}
       onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = ''; }}
     >

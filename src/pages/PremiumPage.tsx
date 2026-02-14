@@ -21,7 +21,7 @@ export function PremiumPage() {
   };
 
   return (
-    <div className="pt-20 min-h-[100vh] w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+    <div className="pt-24 min-h-[100vh] w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
       {/* Hero */}
       <section className="text-center py-12 animate-slide-up">
         <div className="relative inline-block">
@@ -48,7 +48,7 @@ export function PremiumPage() {
           BEST VALUE
         </div>
         <div 
-          className="glass-card glass-card-gold p-7 btn-shimmer overflow-hidden" 
+          className="game-card !p-7" 
           style={{ background: 'linear-gradient(135deg, rgba(255,230,0,0.08), rgba(255,128,0,0.05))' }}
         >
           <div className="flex items-center gap-4 mb-5">
@@ -72,7 +72,7 @@ export function PremiumPage() {
           </div>
           <button
             onClick={() => handlePurchase(STRIPE_LINKS.premiumBundle, 'adFree')}
-            className="w-full gradient-gold py-4 rounded-xl font-black text-lg text-black hover:opacity-90 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] btn-shimmer overflow-hidden shadow-[0_4px_20px_rgba(255,230,0,0.2)]"
+            className="btn-elite btn-elite-gold w-full text-lg"
           >
             <span className="relative z-10 flex items-center justify-center gap-2">
               <span>👑</span> Get Premium Bundle — $4.99
@@ -82,7 +82,7 @@ export function PremiumPage() {
       </div>
 
       {/* Ad-Free */}
-      <div className="glass-card glass-card-blue p-6 mb-6 animate-slide-up" style={{ animationDelay: '0.45s' }}>
+      <div className="game-card !p-6 mb-6 animate-slide-up" style={{ animationDelay: '0.45s' }}>
         <div className="flex items-center gap-4">
           <span className="text-3xl">⭐</span>
           <div className="flex-1">
@@ -94,7 +94,7 @@ export function PremiumPage() {
           ) : (
             <button
               onClick={() => handlePurchase(STRIPE_LINKS.adFree, 'adFree')}
-              className="px-6 py-2.5 rounded-xl font-bold text-white gradient-hero hover:opacity-90 transition-all duration-300 hover:scale-105 active:scale-95 btn-shimmer overflow-hidden shadow-[0_4px_15px_rgba(0,153,255,0.2)]"
+              className="btn-elite btn-elite-primary text-sm"
             >
               <span className="relative z-10">$2.99</span>
             </button>
@@ -118,7 +118,7 @@ export function PremiumPage() {
         <span className="w-2 h-2 rounded-full bg-[#9933ff] shadow-[0_0_6px_rgba(153,51,255,0.8)]" />
         SEASON PASS
       </h2>
-      <div className="glass-card glass-card-purple p-6 mb-8 animate-slide-up" style={{ animationDelay: '0.75s', background: 'linear-gradient(135deg, rgba(0,153,255,0.08), rgba(153,51,255,0.05))' }}>
+      <div className="game-card !p-6 mb-8 animate-slide-up" style={{ animationDelay: '0.75s', background: 'linear-gradient(135deg, rgba(0,153,255,0.08), rgba(153,51,255,0.05))' }}>
         <div className="flex items-center gap-4">
           <span className="text-3xl">🛡️</span>
           <div className="flex-1">
@@ -135,7 +135,7 @@ export function PremiumPage() {
       </div>
 
       {/* Comparison */}
-      <div className="glass-card p-7 mb-8 animate-slide-up" style={{ animationDelay: '0.8s' }}>
+      <div className="game-card !p-7 mb-8 animate-slide-up" style={{ animationDelay: '0.8s' }}>
         <h3 className="font-black text-white text-center mb-6 tracking-wider">WHY BUY ON THE WEBSITE?</h3>
         <div className="grid grid-cols-2 gap-6 text-center">
           <div className="group cursor-default">
@@ -186,7 +186,7 @@ function CoinPack({ icon, name, desc, price, bonus, onClick, color, delay }: {
   icon: string; name: string; desc: string; price: string; bonus: string; onClick: () => void; color: string; delay: string;
 }) {
   return (
-    <div className="glass-card p-5 flex items-center gap-4 group transition-all duration-300 hover:border-white/15 active:scale-[0.99] animate-slide-up" style={{ animationDelay: delay }}>
+    <div className="game-card !p-5 flex items-center gap-4 group active:!scale-[0.99] animate-slide-up" style={{ animationDelay: delay }}>
       <span className="text-3xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">{icon}</span>
       <div className="flex-1">
         <div className="flex items-center gap-2">

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export function SchoolsPage() {
   return (
-    <div className="pt-20 min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="pt-24 min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       {/* Hero */}
       <section className="text-center py-14 animate-slide-up">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#9933ff]/10 border border-[#9933ff]/20 mb-6">
@@ -66,7 +66,7 @@ export function SchoolsPage() {
             { icon: '🏥', use: 'Homebound Students' },
             { icon: '🌍', use: 'Remote Learning' },
           ].map(u => (
-            <div key={u.use} className="glass-card p-4 flex items-center gap-3 group cursor-default">
+            <div key={u.use} className="game-card p-4 flex items-center gap-3 group cursor-default">
               <span className="text-xl transition-transform duration-300 group-hover:scale-125">{u.icon}</span>
               <span className="text-sm font-semibold text-white/60 group-hover:text-white/90 transition-colors">{u.use}</span>
             </div>
@@ -77,7 +77,7 @@ export function SchoolsPage() {
       {/* Subjects Grid */}
       <section className="mb-16 animate-slide-up">
         <h2 className="text-xl font-black text-white text-center mb-8">Subjects & Skills Covered</h2>
-        <div className="glass-card p-8">
+        <div className="game-card p-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-4 gap-x-6 text-sm">
             {[
               'Addition & Subtraction', 'Multiplication & Division', 'Fractions & Decimals', 'Algebra & Equations',
@@ -109,7 +109,7 @@ export function SchoolsPage() {
 
       {/* CTA */}
       <section className="text-center py-12 animate-slide-up">
-        <div className="glass-card p-10 max-w-2xl mx-auto btn-shimmer overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(0,153,255,0.08), rgba(153,51,255,0.06))' }}>
+        <div className="game-card p-10 max-w-2xl mx-auto btn-shimmer overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(0,153,255,0.08), rgba(153,51,255,0.06))' }}>
           <h2 className="text-3xl font-black text-white mb-3">Ready to Get Started?</h2>
           <p className="text-white/45 mb-6 max-w-lg mx-auto">
             SkillzStorm is free for every student, in every classroom, right now. 
@@ -134,7 +134,7 @@ export function SchoolsPage() {
 
 function Feature({ icon, title, desc, color }: { icon: string; title: string; desc: string; color: string }) {
   return (
-    <div className="glass-card p-6 group cursor-default transition-all duration-300 hover:scale-[1.02]"
+    <div className="game-card p-6 group cursor-default transition-all duration-300 hover:scale-[1.02]"
       onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = `${color}30`; }}
       onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = ''; }}
     >
@@ -147,7 +147,7 @@ function Feature({ icon, title, desc, color }: { icon: string; title: string; de
 
 function Step({ num, title, desc, color }: { num: string; title: string; desc: string; color: string }) {
   return (
-    <div className="glass-card p-7 text-center group cursor-default">
+    <div className="game-card p-7 text-center group cursor-default">
       <div className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center text-xl font-black text-white transition-transform duration-300 group-hover:scale-110" style={{ background: `linear-gradient(135deg, ${color}, ${color}99)` }}>
         {num}
       </div>
@@ -159,7 +159,7 @@ function Step({ num, title, desc, color }: { num: string; title: string; desc: s
 
 function Testimonial({ quote, author, location }: { quote: string; author: string; location: string }) {
   return (
-    <div className="glass-card p-6 group cursor-default hover:border-white/15 transition-all duration-300">
+    <div className="game-card p-6 group cursor-default hover:border-white/15 transition-all duration-300">
       <p className="text-white/60 text-sm leading-relaxed mb-4 italic">"{quote}"</p>
       <div className="flex items-center gap-2">
         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#0099ff] to-[#9933ff] flex items-center justify-center text-xs font-black text-white">

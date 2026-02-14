@@ -46,16 +46,17 @@ export function StorePage() {
   const cartTotal = cart.reduce((sum, item) => sum + item.priceNum, 0);
 
   return (
-    <div className="pt-20 min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+    <div className="pt-24 min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
       <TopBannerAd />
 
       {/* Header */}
-      <div className="text-center mb-8 animate-slide-up">
-        <h1 className="text-4xl font-black mb-2">
+      <div className="text-center mb-10 animate-slide-up relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[150px] bg-gradient-to-r from-[#ffe600]/10 to-[#ff8000]/10 blur-[80px] rounded-full pointer-events-none" />
+        <h1 className="text-5xl sm:text-6xl font-black mb-3 relative">
           <span className="bg-gradient-to-r from-[#ffe600] via-[#ff8000] to-[#ff2626] bg-clip-text text-transparent">STORM STORE</span>
         </h1>
-        <p className="text-white/40">VR Headsets • 3D Glasses • Accessories</p>
-        <p className="text-xs text-white/25 mt-1">All physical products ship to your door via Stripe secure checkout</p>
+        <p className="text-white/35 text-sm">VR Headsets • 3D Glasses • Accessories</p>
+        <p className="text-xs text-white/20 mt-2">All products ship to your door • Secure Stripe checkout • Free shipping over $50</p>
       </div>
 
       {/* Premium CTA */}
@@ -89,16 +90,22 @@ export function StorePage() {
       </Link>
 
       {/* Category filters */}
-      <div className="flex gap-2 mb-8 overflow-x-auto pb-2 justify-center animate-slide-up delay-300">
+      <div className="flex gap-2 mb-10 overflow-x-auto pb-2 justify-center animate-slide-up delay-300">
         {storeCategories.map((cat) => (
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 active:scale-90 ${
-              selectedCategory === cat
-                ? 'bg-[#9933ff]/20 text-[#9933ff] border border-[#9933ff]/40 shadow-[0_0_12px_rgba(153,51,255,0.15)]'
-                : 'bg-white/5 text-white/40 hover:bg-white/10 hover:text-white/60 border border-transparent'
-            }`}
+            className="whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 active:scale-90 border"
+            style={selectedCategory === cat ? {
+              borderColor: 'rgba(153,51,255,0.4)',
+              color: '#9933ff',
+              backgroundColor: 'rgba(153,51,255,0.12)',
+              boxShadow: '0 0 15px rgba(153,51,255,0.15)',
+            } : {
+              borderColor: 'rgba(255,255,255,0.05)',
+              color: 'rgba(255,255,255,0.35)',
+              backgroundColor: 'rgba(255,255,255,0.03)',
+            }}
           >
             {cat}
           </button>
@@ -170,8 +177,8 @@ function ProductCard({ product, onAddToCart, index }: { product: StoreProduct; o
 
   return (
     <div 
-      className="glass-card p-5 cursor-pointer transition-all duration-300 hover:border-white/15 active:scale-[0.99] animate-slide-up overflow-hidden"
-      style={{ animationDelay: `${index * 0.08}s`, borderColor: expanded ? `${product.accentColor}30` : undefined }}
+      className="game-card !p-5 cursor-pointer active:!scale-[0.99] animate-slide-up"
+      style={{ animationDelay: `${index * 0.08}s`, borderColor: expanded ? `${product.accentColor}30` : undefined, boxShadow: expanded ? `0 8px 40px ${product.accentColor}12` : undefined }}
       onClick={() => setExpanded(!expanded)}
     >
       <div className="flex items-center gap-4">
@@ -206,10 +213,10 @@ function ProductCard({ product, onAddToCart, index }: { product: StoreProduct; o
         {product.inStock && (
           <button
             onClick={(e) => { e.stopPropagation(); onAddToCart(); }}
-            className="w-full py-3 rounded-xl font-bold text-white text-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] btn-shimmer overflow-hidden"
-            style={{ background: `linear-gradient(135deg, ${product.accentColor}, ${product.accentColor}cc)` }}
+            className="btn-elite w-full text-sm text-white"
+            style={{ background: `linear-gradient(135deg, ${product.accentColor}, ${product.accentColor}cc)`, boxShadow: `0 4px 20px ${product.accentColor}25` }}
           >
-            <span className="relative z-10">🛒 Add to Cart</span>
+            🛒 Add to Cart
           </button>
         )}
       </div>

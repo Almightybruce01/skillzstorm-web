@@ -101,7 +101,7 @@ export function CheckoutPage() {
 
   if (showSuccess) {
     return (
-      <div className="pt-20 min-h-[100vh] w-full flex flex-col items-center justify-center text-center px-4">
+      <div className="pt-24 min-h-[100vh] w-full flex flex-col items-center justify-center text-center px-4">
         <div className="text-8xl mb-6 animate-float">🎉</div>
         <h1 className="text-3xl font-black text-white mb-3">ORDER CONFIRMED!</h1>
         <p className="text-white/60 mb-6 max-w-md">
@@ -116,7 +116,7 @@ export function CheckoutPage() {
   }
 
   return (
-    <div className="pt-20 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+    <div className="pt-24 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
       <TopBannerAd />
       
       <div className="text-center mb-8">
@@ -138,7 +138,7 @@ export function CheckoutPage() {
           {/* Cart Items */}
           <div className="space-y-3 mb-8">
             {cart.map((item) => (
-              <div key={item.id} className="glass-card p-4 flex items-center gap-4">
+              <div key={item.id} className="game-card p-4 flex items-center gap-4">
                 <span className="text-3xl">{item.emoji}</span>
                 <div className="flex-1">
                   <h3 className="font-bold text-white">{item.name}</h3>
@@ -158,7 +158,7 @@ export function CheckoutPage() {
           </div>
 
           {/* Order Summary */}
-          <div className="glass-card p-6 mb-6">
+          <div className="game-card p-6 mb-6">
             <h3 className="text-xs font-bold text-[#0099ff] tracking-wider mb-4">ORDER SUMMARY</h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
@@ -186,7 +186,7 @@ export function CheckoutPage() {
           </div>
 
           {/* Email */}
-          <div className="glass-card p-4 mb-6">
+          <div className="game-card p-4 mb-6">
             <label className="text-xs font-bold text-white/60 block mb-2">Email for order confirmation</label>
             <input
               type="email"
