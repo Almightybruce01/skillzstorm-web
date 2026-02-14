@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export function SchoolsPage() {
   return (
-    <div className="pt-20 min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="pt-24 sm:pt-28 min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       {/* Hero */}
       <section className="text-center py-14 animate-slide-up">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#9933ff]/10 border border-[#9933ff]/20 mb-6">

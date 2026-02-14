@@ -5,6 +5,7 @@
    ═══════════════════════════════════════════════════════════ */
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { generateMathQuestion, type Grade } from '../questionBank';
+import { sfxJump, sfxCoin, sfxWrong, sfxCorrect, sfxGameOver, sfxLevelUp } from '../SoundEngine';
 
 interface Theme {
   name: string; bg: string; ground: string; player: string;
@@ -82,6 +83,7 @@ export function DashRunner({ gameId, grade, onClose }: { gameId: string; grade: 
       if (!isJumping && !st.gameOver && !st.gateActive) {
         isJumping = true;
         playerVY = -18;
+        sfxJump();
       }
     }
 
@@ -118,8 +120,9 @@ export function DashRunner({ gameId, grade, onClose }: { gameId: string; grade: 
           if (playerY > GROUND_Y - o.h) {
             st.lives--;
             setLives(st.lives);
+            sfxWrong();
             for (let i = 0; i < 10; i++) particles.push({ x: playerX, y: playerY, vx: (Math.random() - 0.5) * 8, vy: -Math.random() * 6, life: 20, color: '#ff2626' });
-            if (st.lives <= 0) { st.gameOver = true; setGameOver(true); }
+            if (st.lives <= 0) { st.gameOver = true; setGameOver(true); sfxGameOver(); }
             return false;
           }
         }
@@ -133,6 +136,7 @@ export function DashRunner({ gameId, grade, onClose }: { gameId: string; grade: 
           c.collected = true;
           st.score += 5;
           setScore(st.score);
+          sfxCoin();
           for (let i = 0; i < 8; i++) particles.push({ x: c.x, y: c.y, vx: (Math.random() - 0.5) * 5, vy: (Math.random() - 0.5) * 5, life: 15, color: theme.coin });
           return false;
         }
@@ -309,12 +313,16 @@ export function DashRunner({ gameId, grade, onClose }: { gameId: string; grade: 
       stateRef.current.level++;
       setScore(stateRef.current.score);
       setLevel(stateRef.current.level);
+      sfxCorrect();
+      sfxLevelUp();
     } else {
       stateRef.current.lives--;
       setLives(stateRef.current.lives);
+      sfxWrong();
       if (stateRef.current.lives <= 0) {
         stateRef.current.gameOver = true;
         setGameOver(true);
+        sfxGameOver();
       }
     }
     stateRef.current.gateActive = false;

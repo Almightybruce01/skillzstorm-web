@@ -5,6 +5,7 @@
    ═══════════════════════════════════════════════════════════ */
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { getQuestions, type Grade } from '../questionBank';
+import { sfxFlip, sfxMatch, sfxWrong, sfxLevelUp } from '../SoundEngine';
 
 interface CardData {
   id: number;
@@ -88,6 +89,7 @@ export function MemoryMatrix({ gameId, grade, onClose }: { gameId: string; grade
   const handleCardClick = (card: CardData) => {
     if (lockFlip || matched.has(card.id) || flipped.has(card.id)) return;
 
+    sfxFlip();
     const newFlipped = new Set(flipped);
     newFlipped.add(card.id);
     setFlipped(newFlipped);
@@ -103,9 +105,12 @@ export function MemoryMatrix({ gameId, grade, onClose }: { gameId: string; grade
         setMatched(m => new Set(m).add(a).add(b));
         const baseScore = 100 - moves * 2;
         setScore(s => s + Math.max(20, baseScore) * level);
+        sfxMatch();
+        if (matched.size + 2 === cards.length) sfxLevelUp();
         setFlipped(new Set());
         setLockFlip(false);
       } else {
+        sfxWrong();
         setTimeout(() => {
           setFlipped(new Set());
           setLockFlip(false);

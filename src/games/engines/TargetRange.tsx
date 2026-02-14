@@ -5,6 +5,7 @@ import {
   type Grade,
   type Question,
 } from '../questionBank';
+import { sfxShoot, sfxCorrect, sfxWrong, sfxGameOver, sfxLevelUp } from '../SoundEngine';
 
 type GameId =
   | 'vocabulary_sniper'
@@ -137,14 +138,17 @@ export function TargetRange({ gameId, grade, onClose }: TargetRangeProps) {
 
   const handleTargetClick = (text: string) => {
     if (!question) return;
+    sfxShoot();
     const correct = text === question.answer;
 
     if (correct) {
       setScore((s) => s + 10 * level);
+      sfxCorrect();
       setCorrectCount((c) => {
         const newCorrect = c + 1;
         if (newCorrect >= 4) {
           setLevel((l) => l + 1);
+          sfxLevelUp();
           return 0;
         }
         return newCorrect;
@@ -157,11 +161,13 @@ export function TargetRange({ gameId, grade, onClose }: TargetRangeProps) {
     } else {
       const newLives = lives - 1;
       setLives(newLives);
+      sfxWrong();
       setFlashRed(true);
       setTimeout(() => setFlashRed(false), 300);
       setSplat({ x: 50, y: 50, correct: false });
       setTimeout(() => setSplat(null), 400);
       if (newLives <= 0) {
+        sfxGameOver();
         setTimeout(onClose, 800);
       } else {
         setTimeout(spawnTargets, 500);

@@ -5,6 +5,7 @@
    ═══════════════════════════════════════════════════════════ */
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { generateMathQuestion, getRandomQuestion, type Grade, type Question } from '../questionBank';
+import { sfxExplosion, sfxWrong, sfxGameOver, sfxCorrect } from '../SoundEngine';
 
 interface Enemy {
   id: number;
@@ -87,6 +88,8 @@ export function ZombieDefense({ gameId, grade, onClose }: { gameId: string; grad
     if (feedback || gameOver) return;
     if (opt === question.answer) {
       setFeedback('correct');
+      sfxCorrect();
+      sfxExplosion();
       // Kill closest enemy
       setEnemies(prev => {
         if (prev.length === 0) return prev;
@@ -108,9 +111,10 @@ export function ZombieDefense({ gameId, grade, onClose }: { gameId: string; grad
       }, 400);
     } else {
       setFeedback('wrong');
+      sfxWrong();
       setLives(l => {
         const nl = l - 1;
-        if (nl <= 0) setGameOver(true);
+        if (nl <= 0) { setGameOver(true); sfxGameOver(); }
         return nl;
       });
       setTimeout(() => setFeedback(null), 500);

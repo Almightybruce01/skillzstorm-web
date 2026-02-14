@@ -11,7 +11,7 @@ export function ContactPage() {
   };
 
   return (
-    <div className="pt-20 min-h-[100vh] w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="pt-24 sm:pt-28 min-h-[100vh] w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       {/* Hero */}
       <section className="text-center py-14 animate-slide-up">
         <h1 className="text-5xl font-black mb-4">

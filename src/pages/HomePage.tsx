@@ -5,11 +5,11 @@ import { InArticleAd, FooterAd } from '../components/ads/AdBanner';
 export function HomePage() {
   const featured = getFeaturedGames();
   return (
-    <div className="pt-20 w-full min-h-[100vh]">
+    <div className="pt-24 sm:pt-28 w-full min-h-[100vh]">
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ═══════ HERO ═══════ */}
-        <section className="text-center pt-12 sm:pt-20 pb-16 sm:pb-24 relative">
+        <section className="text-center pt-8 sm:pt-12 pb-16 sm:pb-24 relative">
           {/* Animated glow orb behind title */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-gradient-to-r from-[#0099ff]/15 via-[#9933ff]/10 to-[#ff8000]/15 blur-[100px] rounded-full color-shift-slow pointer-events-none" />
 

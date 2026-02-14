@@ -5,6 +5,7 @@
    ═══════════════════════════════════════════════════════════ */
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { generateMathQuestion, getRandomQuestion, type Grade, type Question } from '../questionBank';
+import { sfxCorrect, sfxWrong, sfxGameOver, sfxStreak, sfxLevelUp } from '../SoundEngine';
 
 type ThemeId = 'sat_word_arena' | 'flash_fact_frenzy' | 'speed_multiplication' | 'brain_arena' | 'default';
 
@@ -66,9 +67,10 @@ export function SpeedQuiz({ gameId, grade, onClose }: { gameId: string; grade: G
     if (answeredRef.current) return;
     setAnswered(true);
     setFlash('wrong');
+    sfxWrong();
     setLives((l) => {
       const next = l - 1;
-      if (next <= 0) setGameOver(true);
+      if (next <= 0) { setGameOver(true); sfxGameOver(); }
       return next;
     });
     setStreak(0);
@@ -106,18 +108,22 @@ export function SpeedQuiz({ gameId, grade, onClose }: { gameId: string; grade: G
 
     if (selected === question!.answer) {
       setFlash('correct');
+      sfxCorrect();
       setScore((s) => s + 10 + Math.min(streak * 2, 20));
       setStreak((s) => s + 1);
+      if (streak + 1 >= 5) sfxStreak();
       setQuestionsAnswered((q) => q + 1);
       if (questionsAnswered + 1 >= 5) {
         setLevel((l) => l + 1);
         setQuestionsAnswered(0);
+        sfxLevelUp();
       }
     } else {
       setFlash('wrong');
+      sfxWrong();
       setLives((l) => {
         const next = l - 1;
-        if (next <= 0) setGameOver(true);
+        if (next <= 0) { setGameOver(true); sfxGameOver(); }
         return next;
       });
       setStreak(0);

@@ -5,6 +5,7 @@
    ═══════════════════════════════════════════════════════════ */
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { generateMathQuestion, getRandomQuestion, type Grade, type Question } from '../questionBank';
+import { sfxPop, sfxWrong, sfxGameOver, sfxStreak } from '../SoundEngine';
 
 interface Balloon {
   id: number; x: number; y: number; text: string; isCorrect: boolean;
@@ -78,7 +79,7 @@ export function BalloonPop({ gameId, grade, onClose }: { gameId: string; grade: 
           // Correct one escaped — lose a life
           setLives(l => {
             const nl = l - 1;
-            if (nl <= 0) setGameOver(true);
+            if (nl <= 0) { setGameOver(true); sfxGameOver(); }
             return nl;
           });
           setCombo(0);
@@ -101,6 +102,8 @@ export function BalloonPop({ gameId, grade, onClose }: { gameId: string; grade: 
     if (balloon.isCorrect) {
       const newCombo = combo + 1;
       const bonus = newCombo >= 3 ? 2 : 1;
+      sfxPop();
+      if (newCombo >= 3) sfxStreak();
       setScore(s => s + 10 * level * bonus);
       setCombo(newCombo);
       if (score > 0 && score % 60 < 10) setLevel(l => l + 1);
@@ -108,9 +111,10 @@ export function BalloonPop({ gameId, grade, onClose }: { gameId: string; grade: 
       const q = gameId.includes('grammar') ? getRandomQuestion(grade, 'grammar') : generateMathQuestion(grade);
       setQuestion(q);
     } else {
+      sfxWrong();
       setLives(l => {
         const nl = l - 1;
-        if (nl <= 0) setGameOver(true);
+        if (nl <= 0) { setGameOver(true); sfxGameOver(); }
         return nl;
       });
       setCombo(0);

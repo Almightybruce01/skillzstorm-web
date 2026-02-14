@@ -27,7 +27,7 @@ export function GamesPage() {
   });
 
   return (
-    <div className="pt-20 min-h-[100vh] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="pt-24 sm:pt-28 min-h-[100vh] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       {/* Header */}
       <div className="text-center mb-10 animate-slide-up">
         <h1 className="text-5xl sm:text-6xl font-black text-white mb-3">

@@ -21,7 +21,7 @@ export function PremiumPage() {
   };
 
   return (
-    <div className="pt-20 min-h-[100vh] w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+    <div className="pt-24 sm:pt-28 min-h-[100vh] w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
       {/* Hero */}
       <section className="text-center py-12 animate-slide-up">
         <div className="relative inline-block">

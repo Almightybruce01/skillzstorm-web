@@ -18,7 +18,7 @@ export function GameDetailPage() {
 
   if (!game) {
     return (
-      <div className="pt-20 min-h-[100vh] w-full flex flex-col items-center justify-center text-center">
+      <div className="pt-24 sm:pt-28 min-h-[100vh] w-full flex flex-col items-center justify-center text-center">
         <div className="text-7xl mb-4 animate-float">🔍</div>
         <h1 className="text-3xl font-black text-white mb-3">Game Not Found</h1>
         <Link to="/games" className="btn-elite btn-elite-primary text-sm">← Back to Games</Link>
@@ -31,7 +31,7 @@ export function GameDetailPage() {
   const playGrade = (selectedGrade || game.supportedGrades[0]) as Grade;
 
   return (
-    <div className="pt-20 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="pt-24 sm:pt-28 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       {/* Back link */}
       <Link to="/games" className="text-white/30 text-sm hover:text-white/60 transition-all duration-300 mb-8 inline-flex items-center gap-2 group">
         <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span>

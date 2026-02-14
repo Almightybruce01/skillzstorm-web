@@ -12,6 +12,7 @@ import { AboutPage } from './pages/AboutPage'
 import { ContactPage } from './pages/ContactPage'
 import { SchoolsPage } from './pages/SchoolsPage'
 import { AccessibilityPage } from './pages/AccessibilityPage'
+import { ArcadePage } from './pages/ArcadePage'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 import { BottomStickyAd } from './components/ads/AdBanner'
@@ -53,6 +54,7 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/schools" element={<SchoolsPage />} />
             <Route path="/accessibility" element={<AccessibilityPage />} />
+            <Route path="/arcade" element={<ArcadePage />} />
           </Routes>
         </main>
         <Footer />

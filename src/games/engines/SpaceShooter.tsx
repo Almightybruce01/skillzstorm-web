@@ -5,6 +5,7 @@
    ═══════════════════════════════════════════════════════════ */
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { generateMathQuestion, type Grade, type Question } from '../questionBank';
+import { sfxShoot, sfxExplosion, sfxWrong, sfxGameOver, sfxLevelUp } from '../SoundEngine';
 
 interface Theme {
   name: string;
@@ -128,6 +129,7 @@ export function SpaceShooter({ gameId, grade, onClose }: { gameId: string; grade
     function shoot() {
       if (st.gameOver || st.paused) return;
       bullets.push({ x: shipX, y: shipY - shipH / 2 });
+      sfxShoot();
     }
 
     function update() {
@@ -169,13 +171,15 @@ export function SpaceShooter({ gameId, grade, onClose }: { gameId: string; grade
               st.score += 10 * st.level;
               setScore(st.score);
               addParticles(a.x, a.y, theme.accentColor, 20);
-              if (st.score % 50 < 10) { st.level++; setLevel(st.level); }
+              sfxExplosion();
+              if (st.score % 50 < 10) { st.level++; setLevel(st.level); sfxLevelUp(); }
               needRespawn = true;
             } else {
               st.lives--;
               setLives(st.lives);
               addParticles(a.x, a.y, '#ff2626', 15);
-              if (st.lives <= 0) { st.gameOver = true; setGameOver(true); }
+              sfxWrong();
+              if (st.lives <= 0) { st.gameOver = true; setGameOver(true); sfxGameOver(); }
               needRespawn = true;
             }
             a.y = H + 200; // remove
@@ -189,7 +193,7 @@ export function SpaceShooter({ gameId, grade, onClose }: { gameId: string; grade
           if (a.isCorrect) {
             st.lives--;
             setLives(st.lives);
-            if (st.lives <= 0) { st.gameOver = true; setGameOver(true); }
+            if (st.lives <= 0) { st.gameOver = true; setGameOver(true); sfxGameOver(); }
           }
           needRespawn = true;
         }

@@ -5,6 +5,7 @@
    ═══════════════════════════════════════════════════════════ */
 import { useState, useEffect, useRef, useCallback } from 'react';
 import type { Grade } from '../questionBank';
+import { sfxClick, sfxCorrect, sfxWrong, sfxGameOver, sfxLevelUp } from '../SoundEngine';
 
 interface Theme { accent: string; bg: string; tile: string; }
 
@@ -107,7 +108,7 @@ export function WordBuilder({ gameId, grade, onClose }: { gameId: string; grade:
           // Time's up
           setLives(l => {
             const nl = l - 1;
-            if (nl <= 0) setGameOver(true);
+            if (nl <= 0) { setGameOver(true); sfxGameOver(); }
             return nl;
           });
           nextSentence();
@@ -121,6 +122,7 @@ export function WordBuilder({ gameId, grade, onClose }: { gameId: string; grade:
 
   const handleWordClick = (word: string, idx: number) => {
     if (gameOver) return;
+    sfxClick();
     const nextCorrectWord = correctWords[selected.length];
     if (word === nextCorrectWord) {
       const newSelected = [...selected, word];
@@ -131,20 +133,22 @@ export function WordBuilder({ gameId, grade, onClose }: { gameId: string; grade:
       if (newSelected.length === correctWords.length) {
         const bonus = timeLeft > 5 ? 5 : 0;
         setScore(s => s + 10 * level + bonus);
+        sfxCorrect();
         setCorrectSentences(c => {
           const nc = c + 1;
-          if (nc % 3 === 0) setLevel(l => l + 1);
+          if (nc % 3 === 0) { setLevel(l => l + 1); sfxLevelUp(); }
           return nc;
         });
         setTimeout(() => nextSentence(), 600);
       }
     } else {
       // Wrong word — shake
+      sfxWrong();
       setShakeIdx(idx);
       setTimeout(() => setShakeIdx(null), 500);
       setLives(l => {
         const nl = l - 1;
-        if (nl <= 0) setGameOver(true);
+        if (nl <= 0) { setGameOver(true); sfxGameOver(); }
         return nl;
       });
     }
