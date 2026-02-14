@@ -1,7 +1,9 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { allGames, gradeLevels } from '../engine/gameData';
+import { allGames, gradeLevels, type GradeLevel } from '../engine/gameData';
 import { InArticleAd } from '../components/ads/AdBanner';
+import { GameLauncher } from '../games/GameLauncher';
+import type { Grade } from '../games/questionBank';
 
 const catColorMap: Record<string, string> = {
   StormBattle: '#0099ff', StormDash: '#00ff80', StormPuzzle: '#ffe600',
@@ -12,6 +14,7 @@ export function GameDetailPage() {
   const { gameId } = useParams<{ gameId: string }>();
   const game = allGames.find(g => g.id === gameId);
   const [playing, setPlaying] = useState(false);
+  const [selectedGrade, setSelectedGrade] = useState<GradeLevel | null>(null);
 
   if (!game) {
     return (
@@ -25,6 +28,7 @@ export function GameDetailPage() {
 
   const accent = catColorMap[game.category] || '#0099ff';
   const gradeColors = game.supportedGrades.map(g => gradeLevels.find(gl => gl.value === g));
+  const playGrade = (selectedGrade || game.supportedGrades[0]) as Grade;
 
   return (
     <div className="pt-20 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
@@ -53,20 +57,47 @@ export function GameDetailPage() {
           {game.isPremium && (
             <span className="text-xs font-black bg-gradient-to-r from-[#ffe600] to-[#ff8000] text-[#0d0d1f] px-4 py-1.5 rounded-lg">PREMIUM</span>
           )}
-          {!game.isAvailable && (
-            <span className="text-xs font-bold bg-white/10 text-white/50 px-4 py-1.5 rounded-lg">COMING SOON</span>
-          )}
         </div>
       </div>
 
-      {/* ═══════ PLAY BUTTON ═══════ */}
+      {/* Grade Selector — pick your grade before playing */}
+      {!playing && game.isAvailable && (
+        <div className="mb-6 animate-slide-up delay-300">
+          <p className="text-white/30 text-xs font-bold text-center tracking-wider mb-3">SELECT YOUR GRADE</p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {game.supportedGrades.map(g => {
+              const gc = gradeLevels.find(gl => gl.value === g);
+              const isActive = (selectedGrade || game.supportedGrades[0]) === g;
+              return (
+                <button
+                  key={g}
+                  onClick={() => setSelectedGrade(g)}
+                  className="px-4 py-2 rounded-xl text-sm font-bold transition-all duration-300 active:scale-95 border"
+                  style={isActive ? {
+                    backgroundColor: `${gc?.color}20`,
+                    borderColor: `${gc?.color}50`,
+                    color: gc?.color,
+                    boxShadow: `0 0 15px ${gc?.color}15`,
+                  } : {
+                    backgroundColor: 'rgba(255,255,255,0.03)',
+                    borderColor: 'rgba(255,255,255,0.06)',
+                    color: 'rgba(255,255,255,0.4)',
+                  }}
+                >
+                  {gc?.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Play Button or Game */}
       {!playing ? (
         <button
           onClick={() => game.isAvailable && setPlaying(true)}
           className={`w-full py-5 rounded-2xl font-black text-xl text-white mb-10 transition-all duration-300 active:scale-[0.97] relative overflow-hidden animate-slide-up delay-300 ${
-            game.isAvailable
-              ? 'cursor-pointer hover:scale-[1.02]'
-              : 'cursor-not-allowed opacity-60'
+            game.isAvailable ? 'cursor-pointer hover:scale-[1.02]' : 'cursor-not-allowed opacity-60'
           }`}
           style={game.isAvailable ? {
             background: `linear-gradient(135deg, ${accent}, ${accent}cc)`,
@@ -74,26 +105,19 @@ export function GameDetailPage() {
           } : { background: '#333' }}
           disabled={!game.isAvailable}
         >
-          {/* Shimmer overlay */}
-          {game.isAvailable && <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-1000" />}
-          {/* Pulse ring */}
           {game.isAvailable && <div className="absolute inset-0 rounded-2xl border-2 animate-ping opacity-20" style={{ borderColor: accent }} />}
           <span className="relative z-10 flex items-center justify-center gap-3">
             {game.isAvailable ? (
-              <>
-                <span className="text-2xl">▶</span>
-                PLAY NOW
-              </>
+              <><span className="text-2xl">▶</span> PLAY NOW</>
             ) : (
-              <>
-                <span className="text-2xl">🔒</span>
-                COMING SOON
-              </>
+              <><span className="text-2xl">🔒</span> COMING SOON</>
             )}
           </span>
         </button>
       ) : (
-        <MiniGameDemo game={game} accent={accent} onClose={() => setPlaying(false)} />
+        <div className="mb-10">
+          <GameLauncher gameId={game.id} grade={playGrade} onClose={() => setPlaying(false)} />
+        </div>
       )}
 
       {/* Description */}
@@ -121,8 +145,6 @@ export function GameDetailPage() {
                 color: gc.color,
                 border: `1px solid ${gc.color}25`,
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = `0 0 20px ${gc.color}20`; e.currentTarget.style.borderColor = `${gc.color}50`; }}
-              onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = `${gc.color}25`; }}
             >
               {gc.label} — {gc.subtitle}
             </span>
@@ -172,197 +194,6 @@ export function GameDetailPage() {
             <span>💻</span> Mac App
           </button>
         </div>
-      </div>
-    </div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════
-   MINI GAME DEMO — actually interactive!
-   ═══════════════════════════════════════════════════════════ */
-function MiniGameDemo({ game, accent, onClose }: { game: typeof allGames[0]; accent: string; onClose: () => void }) {
-  const [score, setScore] = useState(0);
-  const [lives, setLives] = useState(3);
-  const [level, setLevel] = useState(1);
-  const [question, setQuestion] = useState({ text: '', answer: 0, options: [0, 0, 0, 0] });
-  const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(null);
-  const [timeLeft, setTimeLeft] = useState(10);
-  const [gameOver, setGameOver] = useState(false);
-  const [streak, setStreak] = useState(0);
-
-  const generateQuestion = useCallback(() => {
-    const maxNum = level <= 2 ? 10 : level <= 4 ? 25 : 50;
-    const ops = level <= 2 ? ['+'] : level <= 4 ? ['+', '-', '×'] : ['+', '-', '×'];
-    const op = ops[Math.floor(Math.random() * ops.length)];
-    let a = Math.floor(Math.random() * maxNum) + 1;
-    let b = Math.floor(Math.random() * (maxNum / 2)) + 1;
-    let answer: number;
-    let text: string;
-    if (op === '+') { answer = a + b; text = `${a} + ${b}`; }
-    else if (op === '-') { if (a < b) [a, b] = [b, a]; answer = a - b; text = `${a} − ${b}`; }
-    else { a = Math.floor(Math.random() * 12) + 1; b = Math.floor(Math.random() * 12) + 1; answer = a * b; text = `${a} × ${b}`; }
-
-    const opts = new Set<number>();
-    opts.add(answer);
-    while (opts.size < 4) {
-      const wrong = answer + Math.floor(Math.random() * 10) - 5;
-      if (wrong !== answer && wrong >= 0) opts.add(wrong);
-    }
-    const shuffled = Array.from(opts).sort(() => Math.random() - 0.5);
-    setQuestion({ text, answer, options: shuffled });
-    setTimeLeft(10);
-    setFeedback(null);
-  }, [level]);
-
-  useEffect(() => { generateQuestion(); }, [generateQuestion]);
-
-  useEffect(() => {
-    if (gameOver || feedback) return;
-    const timer = setInterval(() => {
-      setTimeLeft(t => {
-        if (t <= 1) { handleAnswer(-1); return 10; }
-        return t - 1;
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [gameOver, feedback, level]);
-
-  const handleAnswer = (selected: number) => {
-    if (feedback || gameOver) return;
-    if (selected === question.answer) {
-      const bonus = streak >= 2 ? 2 : 1;
-      setScore(s => s + (10 * level * bonus));
-      setStreak(s => s + 1);
-      setFeedback('correct');
-      setTimeout(() => {
-        if ((score + 10 * level) % 50 < 10) setLevel(l => l + 1);
-        generateQuestion();
-      }, 600);
-    } else {
-      setStreak(0);
-      setFeedback('wrong');
-      setLives(l => {
-        if (l <= 1) { setGameOver(true); return 0; }
-        return l - 1;
-      });
-      setTimeout(() => { if (!gameOver) generateQuestion(); }, 800);
-    }
-  };
-
-  return (
-    <div className="game-card !p-0 mb-10 animate-pop-in overflow-hidden" style={{ border: `1px solid ${accent}30` }}>
-      {/* Game header */}
-      <div className="flex items-center justify-between p-4 border-b border-white/5" style={{ background: `${accent}08` }}>
-        <div className="flex items-center gap-3">
-          <span className="text-2xl">{game.iconEmoji}</span>
-          <div>
-            <h3 className="font-black text-white text-sm">{game.name}</h3>
-            <p className="text-white/30 text-xs">Level {level} • Knowledge Gate Demo</p>
-          </div>
-        </div>
-        <button onClick={onClose} className="text-white/30 hover:text-white w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center transition-all active:scale-90">
-          ✕
-        </button>
-      </div>
-
-      {/* Game area */}
-      <div className="p-6 sm:p-8">
-        {gameOver ? (
-          <div className="text-center py-8 animate-pop-in">
-            <div className="text-6xl mb-4">💥</div>
-            <h3 className="text-2xl font-black text-white mb-2">Game Over!</h3>
-            <p className="text-4xl font-black mb-4" style={{ color: accent }}>{score} pts</p>
-            <p className="text-white/40 text-sm mb-6">Level {level} • Best Streak: {streak}</p>
-            <div className="flex gap-3 justify-center">
-              <button onClick={() => { setScore(0); setLives(3); setLevel(1); setStreak(0); setGameOver(false); generateQuestion(); }} className="btn-elite btn-elite-primary text-sm">
-                Play Again
-              </button>
-              <button onClick={onClose} className="btn-elite btn-elite-ghost text-sm">
-                Close
-              </button>
-            </div>
-          </div>
-        ) : (
-          <>
-            {/* HUD */}
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-4">
-                <div className="text-sm">
-                  <span className="text-white/30 text-xs">SCORE</span>
-                  <div className="font-black text-lg" style={{ color: accent }}>{score}</div>
-                </div>
-                <div className="text-sm">
-                  <span className="text-white/30 text-xs">LEVEL</span>
-                  <div className="font-black text-lg text-white">{level}</div>
-                </div>
-                {streak >= 2 && (
-                  <div className="text-sm animate-pop-in">
-                    <span className="text-white/30 text-xs">STREAK</span>
-                    <div className="font-black text-lg text-[#ffe600]">🔥{streak}</div>
-                  </div>
-                )}
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="flex gap-1">
-                  {Array.from({ length: 3 }).map((_, i) => (
-                    <span key={i} className={`text-lg transition-all duration-300 ${i < lives ? 'opacity-100 scale-100' : 'opacity-20 scale-75'}`}>
-                      ❤️
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Timer bar */}
-            <div className="h-1.5 rounded-full bg-white/5 mb-8 overflow-hidden">
-              <div
-                className="h-full rounded-full transition-all duration-1000 ease-linear"
-                style={{
-                  width: `${(timeLeft / 10) * 100}%`,
-                  background: timeLeft > 5 ? accent : timeLeft > 2 ? '#ffe600' : '#ff2626',
-                  boxShadow: timeLeft <= 3 ? `0 0 10px ${timeLeft <= 2 ? '#ff2626' : '#ffe600'}40` : 'none',
-                }}
-              />
-            </div>
-
-            {/* Question */}
-            <div className="text-center mb-8">
-              <p className="text-white/30 text-xs font-bold tracking-wider mb-3">SOLVE THIS</p>
-              <div className={`text-5xl sm:text-6xl font-black text-white transition-all duration-300 ${feedback === 'correct' ? 'scale-110 text-[#00ff80]' : feedback === 'wrong' ? 'scale-95 text-[#ff2626]' : ''}`}>
-                {question.text} = ?
-              </div>
-              {feedback && (
-                <p className={`text-sm font-black mt-2 animate-pop-in ${feedback === 'correct' ? 'text-[#00ff80]' : 'text-[#ff2626]'}`}>
-                  {feedback === 'correct' ? (streak >= 3 ? '🔥 STREAK BONUS!' : '✓ Correct!') : `✗ Answer: ${question.answer}`}
-                </p>
-              )}
-            </div>
-
-            {/* Answer options */}
-            <div className="grid grid-cols-2 gap-3">
-              {question.options.map((opt, i) => (
-                <button
-                  key={`${opt}-${i}`}
-                  onClick={() => handleAnswer(opt)}
-                  className="py-4 rounded-xl font-black text-xl text-white transition-all duration-200 active:scale-95 border border-white/[0.06] hover:border-white/15"
-                  style={{
-                    background: feedback && opt === question.answer
-                      ? 'rgba(0,255,128,0.15)'
-                      : feedback === 'wrong' && opt !== question.answer
-                        ? 'rgba(255,255,255,0.02)'
-                        : 'rgba(255,255,255,0.04)',
-                    borderColor: feedback && opt === question.answer ? 'rgba(0,255,128,0.3)' : undefined,
-                  }}
-                  onMouseEnter={(e) => { if (!feedback) { e.currentTarget.style.backgroundColor = `${accent}15`; e.currentTarget.style.borderColor = `${accent}30`; } }}
-                  onMouseLeave={(e) => { if (!feedback) { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.04)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; } }}
-                  disabled={!!feedback}
-                >
-                  {opt}
-                </button>
-              ))}
-            </div>
-          </>
-        )}
       </div>
     </div>
   );
