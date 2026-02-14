@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export function AccessibilityPage() {
   return (
-    <div className="pt-28 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div className="pt-20 min-h-[100vh] w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       <Link to="/" className="text-white/40 text-sm hover:text-[#0099ff] transition-colors mb-6 inline-flex items-center gap-1 group">
         <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span> Back to Home
       </Link>

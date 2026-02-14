@@ -3,7 +3,7 @@ import { TopBannerAd, InArticleAd } from '../components/ads/AdBanner';
 
 export function VRPage() {
   return (
-    <div className="pt-28 min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+    <div className="pt-20 min-h-[100vh] w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
       <TopBannerAd />
 
       {/* ═══════ HERO ═══════ */}
